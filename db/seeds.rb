@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+User.create email: 'ondra@email.cz', name: 'Ondra Želazko', privileges: '["root"]'
+User.create email: 'petr@email.cz', name: 'Petr Petr', privileges: '["admin"]'
+User.create email: 'jarda@email.cz', name: 'Jarda Jarda', privileges: '["admin"]'
+User.create email: 'company@example.com', name: 'domy na miru', privileges: '[]'

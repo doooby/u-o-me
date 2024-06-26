@@ -48,7 +48,7 @@ gem 'bootsnap', require: false
 # gem 'image_processing', '~> 1.2'
 
 # My gems:
-gem 'bootstrap'
+gem 'kaminari'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

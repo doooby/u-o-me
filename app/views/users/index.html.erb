@@ -1,14 +1,54 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="mt-4">Uživatelé</h1>
 
-<h1>Users</h1>
+<% users, pages = paginate_records @users %>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+<nav class="d-flex gap-2 justify-content-between align-items-center">
+  <ul class="pagination m-0">
+    <% pages.each do |page_item| %>
+      <% url = url_for request.query_parameters.merge(page: page_item[:page]) %>
+      <li class="page-item <%= 'active' if page_item[:current] %>">
+        <a class="page-link" href="<%= url %>">
+          <%= page_item[:text] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= form_with url: users_path, method: :get, local: true, class: 'd-flex' do %>
+    <input class="form-control me-2" name="search" type="text" id="users_search" placeholder="Vyhledat" value="<%= params[:search] %>">
+    <button class="btn btn-outline-primary" type="submit">
+      <i class="bi bi-search"></i>
+    </button>
+  <% end %>
+  <div class="d-flex gap-2">
+    <%= link_to new_user_path, class: 'text-decoration-none' do %>
+      <i class="bi bi-person-add"></i>
+      Vytvořit uživatele
+    <% end %>
+  </div>
+</nav>
+
+<div id="users" class="mt-3 text-center row">
+  <% users.each do |user| %>
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong>Email:</strong>
+            <%= user.email %>
+          </h5>
+          <p class="card-text">
+            <strong>Name:</strong>
+            <%= user.name %>
+          </p>
+          <%= link_to "Detail", user, class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New user", new_user_path %>
+<script>
+  document.addEventListener('turbo:load',  function focusSearch () {
+    document.getElementById('users_search')?.focus();
+  });
+</script>

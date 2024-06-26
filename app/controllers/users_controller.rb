@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit create update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
     @users = User.all
+
+    if param = params[:search].presence
+      search_term = "%#{param}%"
+      @users = @users.where 'name LIKE ? OR email LIKE ?', search_term, search_term
+    end
   end
 
   def show

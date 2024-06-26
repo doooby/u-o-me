@@ -1,0 +1,10 @@
+
+- uživatelé
+    - index
+        - stránkování
+        - vyhledávání
+    - nový uživatel
+
+[ ] nový admin
+[ ] editace uživatele
+[ ] smazání uživatele

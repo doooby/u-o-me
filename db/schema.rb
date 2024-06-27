@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_040001) do
     t.date "due_date"
     t.integer "price_amount"
     t.text "note"
+    t.string "public_slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_invoices_on_user_id"

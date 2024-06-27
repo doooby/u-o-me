@@ -12,6 +12,7 @@ class CreateInvoices < ActiveRecord::Migration[7.1]
       t.integer :price_amount
       t.text :note
 
+      t.string :public_slug
       t.timestamps
     end
   end

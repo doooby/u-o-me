@@ -1,0 +1,30 @@
+%p.mt-4
+  Dobrý den,
+%h4
+  Bohužel, stále jsme nedotali platbu za Váš nákup.
+%h2
+  Aplikace U-O-Me - automatické upomínání nezaplacených faktur.
+%p
+  Věříme, že víte, o kterou fakturu jde, ale pro přípomenutí, zde jsou základní údaje.
+
+.row
+  .col-md-6
+    = render 'our_company_card'
+
+  .col-md-6
+    .card
+      .card-header Vámi dlužená faktura:
+      .card-body
+        .card-text
+          %span částka
+          %strong= format_czk_amount @invoice.price_amount
+        .card-text
+          %span datum splatnosti
+          %strong= format_cz_date @invoice.due_date
+
+%p.mt-3
+  Detailní informace Vám zobrazíme až po přihlášení do systému, kdy Vás nejprve ověříme vašim emailem.
+  %br
+  přihlášení
+  %a{ href: '/login' } provedete zde
+  \.

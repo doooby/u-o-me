@@ -8,16 +8,20 @@ class Invoice < ApplicationRecord
     validates :due_date, presence: true
     validates :price_amount, presence: true
 
-    def public_slug
-        'lfduisduflidsulkfjds'
-    end
+    before_create :set_public_slug
 
     def send_next_reminder!
         if reminders.count.zero?
-            InvoiceReminderMailer.new_invoice(self).deliver_later
+            InvoiceReminderMailer.new_invoice(self, save: true).deliver_later
         else
 
         end
+    end
+
+private
+
+    def set_public_slug
+        self.public_slug = SecureRandom.uuid
     end
 
 end

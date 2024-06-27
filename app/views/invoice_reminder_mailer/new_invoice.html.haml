@@ -1,0 +1,12 @@
+%p
+  Hello,
+%p
+  You have a new invoice.
+%p
+  Amount:
+  = format_czk_amount(@invoice.buyer_email)
+%p
+  Created at:
+  = @invoice.created_at.strftime('%d. %m. %Y')
+%p
+  Thank you for your business!

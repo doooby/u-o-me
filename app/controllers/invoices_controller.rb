@@ -57,8 +57,8 @@ private
     values = params.require(:invoice).permit(
       :buyer_email, :buyer_name, :buyer_address, :buyer_phonem, :due_date, :price_amount, :note
     )
-    values[:due_date] = ApplicationHelper.cast_cz_date values[:due_date]
-    values[:price_amount] = ApplicationHelper.cast_czk_amount values[:price_amount]
+    values[:due_date] = TextFormattingHelper.cast_cz_date values[:due_date]
+    values[:price_amount] = TextFormattingHelper.cast_czk_amount values[:price_amount]
     values
   end
 

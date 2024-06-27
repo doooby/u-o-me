@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-    before_action :set_invoice, only: %i[ edit update destroy ]
+    before_action :set_invoice, only: %i[ show edit update destroy ]
 
   def index
     @invoices = Invoice.all

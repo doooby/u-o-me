@@ -1,0 +1,43 @@
+<h1 class="mt-4">Detail faktury</h1>
+
+<div class="row">
+
+  <div class="col-md-6 col-lg-4">
+
+    <div class="mb-3">
+      <strong><%= Invoice.human_attribute_name(:buyer_email) %></strong><br>
+      <%= @invoice.buyer_email %>
+    </div>
+    <div class="mb-3">
+      <strong><%= Invoice.human_attribute_name(:buyer_name) %></strong><br>
+      <%= @invoice.buyer_name %>
+    </div>
+    <div class="mb-3">
+      <strong><%= Invoice.human_attribute_name(:buyer_address) %></strong><br>
+      <%= @invoice.buyer_address %>
+    </div>
+    <div class="mb-3">
+      <strong><%= Invoice.human_attribute_name(:buyer_phone) %></strong><br>
+      <%= @invoice.buyer_phone %>
+    </div>
+
+  </div>
+
+  <div class="col-md-6 col-lg-4">
+    <div class="mb-3">
+      <strong><%= Invoice.human_attribute_name(:due_date) %></strong><br>
+      <%= format_cz_date @invoice.due_date %>
+    </div>
+    <div class="mb-3">
+      <strong><%= Invoice.human_attribute_name(:price_amount) %></strong><br>
+      <%= format_czk_amount @invoice.price_amount %>
+    </div>
+    <div class="mb-3">
+      <strong><%= Invoice.human_attribute_name(:note) %></strong><br>
+      <small>
+        <%= @invoice.note %>
+      </small>
+    </div>
+  </div>
+
+</div>

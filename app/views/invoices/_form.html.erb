@@ -1,45 +1,52 @@
-<div class="row">
-    <%= form_with model: invoice do |form| %>
-      <div class="col-12">
-        <%= render 'form_errors', model: invoice %>
-      </div>
-
-      <div class="col-md-6 col-lg-4">
-        <div class="mb-3">
-          <%= form.label :buyer_email, class: 'form-label' %>
-          <%= form.text_field :buyer_email, class: 'form-control' %>
-        </div>
-
-        <div  class="mb-3">
-          <%= form.label :buyer_name, class: 'form-label' %>
-          <%= form.text_field :buyer_name, class: 'form-control' %>
-        </div>
-
-        <div  class="mb-3">
-          <%= form.label :buyer_address, class: 'form-label' %>
-          <%= form.text_field :buyer_address, class: 'form-control' %>
-        </div>
-
-        <div  class="mb-3">
-          <%= form.label :buyer_phone, class: 'form-label' %>
-          <%= form.text_field :buyer_phone, class: 'form-control' %>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4">
-        <div  class="mb-3">
-          <%= form.label :due_date, class: 'form-label' %>
-          <%= form.text_field :due_date, class: 'form-control', value: format_cz_date(invoice.due_date)  %>
-        </div>
-
-        <div  class="mb-3">
-          <%= form.label :price_amount, class: 'form-label' %>
-          <%= form.text_field :price_amount, class: 'form-control', value: format_czk_amount(invoice.price_amount, show_unit: false)  %>
-        </div>
-
-        <div class="mb-3">
-          <%= form.submit class: 'btn btn-primary' %>
-        </div>
-      </div>
-    <% end %>
+<%= form_with model: invoice do |form| %>
+  <div class="row">
+    <%= render 'form_errors', model: invoice %>
   </div>
+
+  <div class="row mt-2">
+    <div class="col-md-6 col-lg-4">
+      <div class="mb-3">
+        <%= form.label :buyer_email, class: 'form-label' %>
+        <%= form.text_field :buyer_email, class: 'form-control' %>
+      </div>
+
+      <div  class="mb-3">
+        <%= form.label :buyer_name, class: 'form-label' %>
+        <%= form.text_field :buyer_name, class: 'form-control' %>
+      </div>
+
+      <div  class="mb-3">
+        <%= form.label :buyer_address, class: 'form-label' %>
+        <%= form.text_field :buyer_address, class: 'form-control' %>
+      </div>
+
+      <div  class="mb-3">
+        <%= form.label :buyer_phone, class: 'form-label' %>
+        <%= form.text_field :buyer_phone, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div  class="mb-3">
+        <%= form.label :due_date, class: 'form-label' %>
+        <%= form.text_field :due_date, class: 'form-control', value: format_cz_date(invoice.due_date)  %>
+      </div>
+
+      <div  class="mb-3">
+        <%= form.label :price_amount, class: 'form-label' %>
+        <%= form.text_field :price_amount, class: 'form-control', value: format_czk_amount(invoice.price_amount, show_unit: false)  %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :note, class: 'form-label' %>
+        <%= form.text_area :note, class: 'form-control', rows: 6  %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

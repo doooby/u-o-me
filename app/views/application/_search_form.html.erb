@@ -1,0 +1,13 @@
+<%= form_with url: path, method: :get, local: true, class: 'd-flex' do %>
+    <input class="form-control me-2" name="search" type="text" id="search_input" placeholder="Vyhledat" value="<%= params[:search] %>">
+
+    <button class="btn btn-outline-primary" type="submit">
+        <i class="bi bi-search"></i>
+    </button>
+
+    <script>
+        document.addEventListener('turbo:load',  function focusSearch () {
+          document.getElementById('search_input')?.focus();
+        });
+    </script>
+<% end %>

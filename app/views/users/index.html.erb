@@ -3,22 +3,8 @@
 <% users, pages = paginate_records @users %>
 
 <nav class="d-flex gap-2 justify-content-between align-items-center">
-  <ul class="pagination m-0">
-    <% pages.each do |page_item| %>
-      <% url = url_for request.query_parameters.merge(page: page_item[:page]) %>
-      <li class="page-item <%= 'active' if page_item[:current] %>">
-        <a class="page-link" href="<%= url %>">
-          <%= page_item[:text] %>
-        </a>
-      </li>
-    <% end %>
-  </ul>
-  <%= form_with url: users_path, method: :get, local: true, class: 'd-flex' do %>
-    <input class="form-control me-2" name="search" type="text" id="users_search" placeholder="Vyhledat" value="<%= params[:search] %>">
-    <button class="btn btn-outline-primary" type="submit">
-      <i class="bi bi-search"></i>
-    </button>
-  <% end %>
+  <%= render 'pagination', pages: %>
+  <%= render 'search_form', path: users_path %>
   <div class="d-flex gap-2">
     <%= link_to new_user_path, class: 'text-decoration-none' do %>
       <i class="bi bi-person-add"></i>
@@ -33,11 +19,11 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">
-            <strong>Email:</strong>
+            <strong>E-mail:</strong>
             <%= user.email %>
           </h5>
           <p class="card-text">
-            <strong>Name:</strong>
+            <strong>Jméno:</strong>
             <%= user.name %>
           </p>
           <%= link_to "Detail", user, class: 'btn btn-outline-secondary' %>
@@ -46,9 +32,3 @@
     </div>
   <% end %>
 </div>
-
-<script>
-  document.addEventListener('turbo:load',  function focusSearch () {
-    document.getElementById('users_search')?.focus();
-  });
-</script>

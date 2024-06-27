@@ -1,0 +1,47 @@
+<h1 class="mt-4">Faktury</h1>
+
+<% invoices, pages = paginate_records @invoices %>
+
+<nav class="d-flex gap-2 justify-content-between align-items-center">
+  <%= render 'pagination', pages: %>
+  <%= render 'search_form', path: invoices_path %>
+  <div class="d-flex gap-2">
+    <%= link_to new_invoice_path, class: 'text-decoration-none' do %>
+      <i class="bi bi-receipt"></i>
+      Vložit fakturu
+    <% end %>
+  </div>
+</nav>
+
+<div id="invoices" class="mt-3 text-center row">
+  <% invoices.each do |invoice| %>
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong>Odběratel:</strong>
+            <%= invoice.buyer_name %>
+          </h5>
+          <h6>
+            <%= format_cz_date invoice.due_date %>
+            <br>
+            <%= format_czk_amount invoice.price_amount %>
+          </h6>
+          <p class="card-text mt-2">
+            <strong>E-mail:</strong>
+            <%= invoice.buyer_email %>
+          </p>
+          <% if invoice.buyer_address.present? %>
+            <p class="card-text">
+                <strong>Addresa:</strong>
+                <%= invoice.buyer_address %>
+            </p>
+          <% end %>
+          <%= link_to "Detail", invoice, class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+

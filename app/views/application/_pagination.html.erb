@@ -1,0 +1,10 @@
+<ul class="pagination m-0">
+    <% pages.each do |page_item| %>
+        <% url = url_for request.query_parameters.merge(page: page_item[:page]) %>
+        <li class="page-item <%= 'active' if page_item[:current] %>">
+        <a class="page-link" href="<%= url %>">
+            <%= page_item[:text] %>
+        </a>
+        </li>
+    <% end %>
+</ul>

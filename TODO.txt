@@ -4,7 +4,9 @@
         - stránkování
         - vyhledávání
     - nový uživatel
+        - validace jméno & email
 
+[ ] vyhledávání pouze adminů
 [ ] nový admin
 [ ] editace uživatele
 [ ] smazání uživatele

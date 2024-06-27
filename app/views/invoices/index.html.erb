@@ -19,7 +19,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">
-            <strong>Odběratel:</strong>
+            <strong><%= Invoice.human_attribute_name(:buyer_name) %>:</strong>
             <%= invoice.buyer_name %>
           </h5>
           <h6>
@@ -28,12 +28,12 @@
             <%= format_czk_amount invoice.price_amount %>
           </h6>
           <p class="card-text mt-2">
-            <strong>E-mail:</strong>
+            <strong><%= Invoice.human_attribute_name(:buyer_email) %>:</strong>
             <%= invoice.buyer_email %>
           </p>
           <% if invoice.buyer_address.present? %>
             <p class="card-text">
-                <strong>Addresa:</strong>
+                <strong><%= Invoice.human_attribute_name(:buyer_address) %>:</strong>
                 <%= invoice.buyer_address %>
             </p>
           <% end %>

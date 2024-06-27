@@ -25,6 +25,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new invoice_params
 
     if @invoice.save
+      @invoice.send_next_reminder!
       redirect_to invoice_url(@invoice), notice: "Invoice was successfully created."
     else
       render :new, status: :unprocessable_entity

@@ -1,12 +1,12 @@
 %p
-  Hello,
+  Dobrý den,
+%h4
+  chceme Vás informovat, že jsme stále nedotali platbu za Váš nákup.
 %p
-  You have a new invoice.
+  Z toho důvodu jsme fakturu se splatností ke dni #{format_cz_date @invoice.due_date}, pro částku #{format_czk_amount @invoice.price_amount}, jsme přiřadili do naší aplikace.
+%h2
+  Aplikace U-O-Me - automatické upomínání nezaplacených faktur.
 %p
-  Amount:
-  = format_czk_amount(@invoice.buyer_email)
-%p
-  Created at:
-  = @invoice.created_at.strftime('%d. %m. %Y')
-%p
-  Thank you for your business!
+  Můžete se na svoje nezaplacené faktury podívat na odkazu zde:
+  %a{ href: "#{app_url_base}/faktura/#{@invoice.public_slug}" } faktura #{format_czk_amount @invoice.price_amount}
+  \. Pro zobrazení většího detailu se musíte nejprve přihlásit.

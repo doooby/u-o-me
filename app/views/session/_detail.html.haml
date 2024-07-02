@@ -1,0 +1,6 @@
+%h2 Přihlásený uživatel
+%p= current_user.email
+
+= form_with url: session_destroy_path, local: true do |form|
+  .mb-3
+    %button.btn.btn-link.px-0{ type: 'submit' } Odhlásit se

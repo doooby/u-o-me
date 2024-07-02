@@ -1,8 +1,13 @@
 class InvoicesController < ApplicationController
+    before_action :require_user_session
+    before_action :require_admin, only: %i[ new create edit update destroy ]
     before_action :set_invoice, only: %i[ show edit update destroy ]
 
   def index
     @invoices = Invoice.all
+    unless current_user.is_admin?
+      @invoices = @invoices.where user: current_user
+    end
     @invoices.order due_date: :desc
 
     if param = params[:search].presence
@@ -23,6 +28,7 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new invoice_params
+    @invoice.user = User.find_by email: @invoice.buyer_email
 
     if @invoice.save
       @invoice.send_next_reminder!

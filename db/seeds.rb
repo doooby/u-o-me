@@ -8,10 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create! email: 'ondra@email.cz', name: 'Ondra Želazko', privileges: '["root"]'
-User.create! email: 'petr@email.cz', name: 'Petr Petr', privileges: '["admin"]'
-User.create! email: 'jarda@email.cz', name: 'Jarda Jarda', privileges: '["admin"]'
-User.create! email: 'company@example.com', name: 'domy na miru', privileges: '[]'
+password = '123HEslo'
+
+User.create! email: 'ondra@email.cz', name: 'Ondra Želazko', password:, privileges: ['root']
+User.create! email: 'petr@email.cz', name: 'Petr Petr', password:, privileges: ['admin']
+User.create! email: 'jarda@email.cz', name: 'Jarda Jarda', password:, privileges: ['admin']
+User.create! email: 'company@example.com', name: 'domy na miru', password:;
 
 Invoice.create!(
     user: User.find_by!(email: 'company@example.com'),

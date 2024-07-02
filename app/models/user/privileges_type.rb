@@ -17,6 +17,7 @@ class User::PrivilegesType < ActiveRecord::Type::Value
     def self.sanitize_item value
       case value
       when 'admin' then value
+      when 'root' then value
       end
     end
 

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_user_session
+  before_action :require_super_user
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index

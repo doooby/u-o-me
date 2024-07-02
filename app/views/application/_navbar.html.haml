@@ -1,0 +1,21 @@
+%nav.navbar.navbar-expand-lg{style: "background-color: #9d88be;"}
+  .container-fluid
+    %a.navbar-brand{href: "/"} U-O-Me
+    %button.navbar-toggler{"data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
+      %span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      %ul.navbar-nav
+
+        %li.nav-item
+          %a.nav-link{href: root_path} Index
+
+        %li.nav-item
+          %a.nav-link{href: session_path}= current_user ? 'Uživatel' : 'Přihlášení'
+
+        - if current_user
+          %li.nav-item
+            %a.nav-link{href: invoices_path} Faktury
+
+        - if current_user&.is_root?
+          %li.nav-item
+            %a.nav-link{href: users_path} Uživatelé

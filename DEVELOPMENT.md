@@ -5,11 +5,14 @@
         - vyhledávání
     - nový uživatel
         - validace jméno & email
+    - přihlášení & odhlášení
+    - navbar zobrazuje linky podle přihlášení
 - faktury
     - index
         - stránkování
         - vyhledávání
-    - nová faktura
+        - normální uživatel vidí pouze svoje
+    - nová faktura (pouze admin)
         - český zápis částky
         - český zápis datumu
         - po vytvoření odejde první email
@@ -20,13 +23,8 @@
 
 # TODO
 ## users
-[ ] přihlašování (devise)
-[ ] skrýt stránky podle přihlášení / rolí
-[ ] vyhledávání pouze adminů
-[ ] nový admin
-[ ] editace uživatele
-[ ] smazání uživatele
+[ ] vyhledávání pouze admin uživatelů
+[ ] nový admin / správa uživatelů rootem
 ## invoices & reminders
 [ ] algoritmus pro následné upomínky
 [ ] automatické odesílání upomínek
-[ ] filtrování faktur pro uživatele

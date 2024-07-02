@@ -1,0 +1,7 @@
+.mt-4.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6.col-xl-4
+    - if current_user
+      = render 'detail'
+    - else
+      = turbo_frame_tag 'session_login' do
+        = render 'login'

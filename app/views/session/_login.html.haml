@@ -1,0 +1,14 @@
+= form_with url: session_create_path, data: { turbo_frame: "session_login" } do |form|
+  %h1.text-center.mt-4 Přihlášení uživatele
+  .mb-3
+    %label.form-label{ for: 'session_email' } Email
+    %input.form-control{ type: 'text', id: 'session_email', name: 'session_email', value: @session_email }
+    - if @session_fail == :unknown_email
+      .alert.alert-info.mt-1.p-2 Pod tímto emailem nemáme zaznamenou žádnou nezaplacenou fakturu.
+  .mb-3
+    %label.form-label{ for: 'session_passowrd' } Heslo
+    %input.form-control{ type: 'password', id: 'session_password', name: 'session_password' }
+    - if @session_fail == :bad_password
+      .alert.alert-danger.mt-1.p-2 Nesprávné heslo
+  .mb-3
+    %button.btn.btn-primary{ type: 'submit' } Přihlášení

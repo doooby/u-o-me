@@ -23,6 +23,8 @@
 
 # TODO
 ## users
+[ ] registrace uživatele přes email
+[ ] reset hesla přees email
 [ ] vyhledávání pouze admin uživatelů
 [ ] nový admin / správa uživatelů rootem
 ## invoices & reminders
